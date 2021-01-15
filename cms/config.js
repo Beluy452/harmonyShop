@@ -2,7 +2,7 @@ export default {
   cms_manual_init: true,
   backend: {
     name: 'github', //#git-gateway #test-repo #github,
-    repo: 'Beluy452/nextjs-blog',
+    repo: 'Beluy452/harmonyShop',
   },
   media_folder: 'public/img',
   public_folder: 'img',
