@@ -5,7 +5,7 @@ export default function PostList({ nutPastes }) {
 
   return (
     <div>
-      {!nutPastes && <div>No nut pastes!</div>}
+      {!nutPastes.length && <div>No nut pastes!</div>}
       <ul>
         {nutPastes &&
           nutPastes.map((item) => {
