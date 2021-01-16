@@ -58,9 +58,11 @@ export default function NutPost({ siteTitle, frontmatter }) {
 }
 
 export async function getStaticProps({ ...ctx }) {
-  const { postname } = ctx.params
+  const { nutname } = ctx.params
 
-  const content = await import(`../../content/nutPastes/${postname}/${postname}.md`)
+  console.log(ctx.params, ' ctx.params');
+
+  const content = await import(`../../content/nutPastes/${nutname}/${nutname}.md`)
   const config = await import(`../../siteconfig.json`)
   const data = matter(content.default)
 
