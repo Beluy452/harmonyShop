@@ -5,8 +5,10 @@ import ReactMarkdown from 'react-markdown'
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
 
-export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
+export default function NutPost({ siteTitle, frontmatter }) {
   if (!frontmatter) return <></>
+
+  console.log(frontmatter, ' frontmatter');
 
   return (
     <>
@@ -19,16 +21,16 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
         </div>
         <article>
           <h1>{frontmatter.title}</h1>
-          {frontmatter.hero_image && (
+          {frontmatter.img && (
             <img
-              src={frontmatter.hero_image}
+              src={frontmatter.img}
               className="hero"
               alt={frontmatter.title}
             />
           )}
-          <div>
-            <ReactMarkdown source={markdownBody} />
-          </div>
+          {frontmatter.description && (
+            <p>{frontmatter.description}</p>
+          )}
         </article>
       </Layout>
       <style jsx>{`
@@ -57,10 +59,8 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
 
 export async function getStaticProps({ ...ctx }) {
   const { postname } = ctx.params
-  console.log(ctx.params, ' ctx.params');
 
-
-  const content = await import(`../../content/posts/${postname}/${postname}.md`)
+  const content = await import(`../../content/nutPastes/${postname}/${postname}.md`)
   const config = await import(`../../siteconfig.json`)
   const data = matter(content.default)
 
@@ -68,17 +68,16 @@ export async function getStaticProps({ ...ctx }) {
     props: {
       siteTitle: config.title,
       frontmatter: data.data,
-      markdownBody: data.content,
     },
   }
 }
 
 export async function getStaticPaths() {
-  const blogSlugs = ((context) => {
+  const nutSlugs = ((context) => {
     return getSlugs(context)
-  })(require.context('../../content/posts', true, /\.md$/))
+  })(require.context('../../content/nutPastes', true, /\.md$/))
 
-  const paths = blogSlugs.map((slug) => `/post/${slug}`)
+  const paths = nutSlugs.map((slug) => `/nut/${slug}`)
 
   return {
     paths, // An array of path names, and any params

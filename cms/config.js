@@ -1,11 +1,11 @@
 export default {
   cms_manual_init: true,
   backend: {
-    name: 'github', //#git-gateway #test-repo #github,
+    name: 'github',
     repo: 'Beluy452/harmonyShop',
   },
-  media_folder: 'public/img',
-  public_folder: 'img',
+  media_folder: 'public/static',
+  public_folder: 'static',
   collections: [
     {
       name: 'posts',
@@ -13,7 +13,7 @@ export default {
       folder: 'content/posts',
       create: true,
       slug: 'index',
-      path: '{{title}}/index',
+      path: '{{title}}/{{title}}',
       editor: {
         preview: true
       },
@@ -26,30 +26,66 @@ export default {
         {
           label: 'Publish Date',
           name: 'date',
-          widget: 'datetime',
+          widget: 'date',
+          format: "MM/DD/YYYY"
         },
         {
           label: 'Body',
           name: 'body',
           widget: 'markdown',
         },
+      ],
+    },
+    {
+      name: 'Nut pastes',
+      label: 'Nut pastes',
+      folder: 'content/nutPastes',
+      create: true,
+      slug: 'index',
+      path: '{{title}}/{{title}}',
+      editor: {
+        preview: true
+      },
+      fields: [
         {
-          label: 'Cats',
-          name: 'cats',
-          widget: 'list',
+          label: 'Title',
+          name: 'title',
+          widget: 'string',
+        },
+        {
+          label: 'Image',
+          name: 'img',
+          widget: 'image',
+        },
+        {
+          label: 'Description',
+          name: 'description',
+          widget: 'text',
+        },
+        {
+          label: 'Category',
+          name: 'category',
+          widget: 'select',
+          options: ["солодкі", "солені", "змішані"]
+        },
+        {
+          label: 'Prices and Valume',
+          name: 'pricesAndVolume',
+          widget: 'object',
+          collapsed: true,
           fields: [
             {
-              label: 'Name',
-              name: 'name',
+              label: 'Volume',
+              name: 'volume',
               widget: 'string',
             },
             {
-              label: 'Description',
-              name: 'description',
-              widget: 'text',
-            },
+              label: 'Prices',
+              name: 'prices',
+              widget: 'string',
+            }
           ]
-        }
+        },
       ],
     },
   ],

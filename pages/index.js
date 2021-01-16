@@ -1,10 +1,11 @@
 import Layout from '@components/Layout'
 import getPosts from '@utils/getPosts'
 import PostList from '@components/PostList'
+import NutList from '@components/NutList'
 
 import styles from '../styles/Home.module.css';
 
-const Index = ({ posts, title, description, ...props }) => {
+const Index = ({ posts, nutPastes, title, description, ...props }) => {
   return (
     <>
       <Layout pageTitle={title} description={description}>
@@ -16,6 +17,7 @@ const Index = ({ posts, title, description, ...props }) => {
         </p>
         <main>
           <PostList posts={posts} />
+          <NutList nutPastes={nutPastes} />
         </main>
         <p>
           You can look at the repository for this project{' '}
@@ -39,9 +41,14 @@ export async function getStaticProps() {
     return getPosts(context)
   })(require.context('../content/posts', true, /\.md$/))
 
+  const nutPastes = ((context) => {
+    return getPosts(context)
+  })(require.context('../content/nutPastes', true, /\.md$/))
+
   return {
     props: {
       posts,
+      nutPastes,
       title: configData.default.title,
       description: configData.default.description,
     },
