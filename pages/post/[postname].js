@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
+import Image from 'next/image'
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>
