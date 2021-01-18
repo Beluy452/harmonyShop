@@ -20,10 +20,12 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
         <article>
           <h1>{frontmatter.title}</h1>
           {frontmatter.hero_image && (
-            <img
-              src={frontmatter.hero_image}
+            <Image
+              width={200}
+              height={200}
               className="hero"
               alt={frontmatter.title}
+              src={`/static/images/${frontmatter.hero_image}`}
             />
           )}
           <div>

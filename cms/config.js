@@ -11,6 +11,7 @@ export default {
       name: 'posts',
       label: 'Posts',
       folder: 'content/posts',
+      media_folder: 'static/images',
       create: true,
       slug: 'index',
       path: '{{title}}/{{title}}',
@@ -40,6 +41,7 @@ export default {
       name: 'Nut pastes',
       label: 'Nut pastes',
       folder: 'content/nutPastes',
+      media_folder: 'static/images',
       create: true,
       slug: 'index',
       path: '{{title}}/{{title}}',
@@ -69,23 +71,15 @@ export default {
           options: ["солодкі", "солені", "змішані"]
         },
         {
-          label: 'Prices and Valume',
-          name: 'pricesAndVolume',
-          widget: 'object',
-          collapsed: true,
-          fields: [
-            {
-              label: 'Volume',
-              name: 'volume',
-              widget: 'string',
-            },
-            {
-              label: 'Prices',
-              name: 'prices',
-              widget: 'string',
-            }
-          ]
+          label: 'Volume',
+          name: 'volume',
+          widget: 'string',
         },
+        {
+          label: 'Price',
+          name: 'price',
+          widget: 'number',
+        }
       ],
     },
   ],
