@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown'
 
 import Layout from '@components/Layout'
 import getSlugs from '@utils/getSlugs'
-import Image from 'next/image'
 
 export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
   if (!frontmatter) return <></>
@@ -21,9 +20,7 @@ export default function BlogPost({ siteTitle, frontmatter, markdownBody }) {
         <article>
           <h1>{frontmatter.title}</h1>
           {frontmatter.hero_image && (
-            <Image
-              width={200}
-              height={200}
+            <img
               className="hero"
               alt={frontmatter.title}
               src={`/static/images/${frontmatter.hero_image}`}

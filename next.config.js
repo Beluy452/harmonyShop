@@ -6,8 +6,5 @@ module.exports = {
       use: 'raw-loader',
     })
     return config
-  },
-  images: {
-    domains: ['assets.vercel.com'],
   }
 }

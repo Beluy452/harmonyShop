@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import matter from 'gray-matter'
-import Image from 'next/image'
 
 import ReactMarkdown from 'react-markdown'
 
@@ -24,9 +23,7 @@ export default function NutPost({ siteTitle, frontmatter }) {
         <article>
           <h1>{frontmatter.title}</h1>
           {frontmatter.img && (
-            <Image
-              width={200}
-              height={200}
+            <img
               className="hero"
               alt={frontmatter.title}
               src={`/static/images/${frontmatter.img}`}
