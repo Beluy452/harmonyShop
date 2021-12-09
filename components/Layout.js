@@ -1,22 +1,23 @@
 import Head from 'next/head'
 
 import Header from './Header'
+import { Container } from '@mui/material';
 
 export default function Layout({ children, pageTitle, description, ...props }) {
   return (
     <>
       <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
-        <meta name="Description" content={description}></meta>
         <title>{pageTitle}</title>
+        <meta name="Description" content={description} />
       </Head>
       <section className="layout">
         <Header />
-        <div className="content">{children}</div>
+				<Container maxWidth="lg">
+				<div className="content">{children}</div>
+				</Container>
       </section>
       <footer>
-        Built with <img src="/netliheart.svg" alt="Netlify Heart" /> for you
+				Footer
       </footer>
     </>
   )

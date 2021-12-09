@@ -1,0 +1,11 @@
+.link {
+	margin: 0 25px;
+	display: block;
+}
+
+.nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}

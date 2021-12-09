@@ -1,14 +1,13 @@
 import Link from 'next/link'
 
-export default function PostList({ posts }) {
-  if (posts === 'undefined') return null
+export default function PostList(posts) {
+  if (posts === 'undefined') return null;
 
   return (
     <div>
       {!posts.length && <div>No posts!</div>}
       <ul>
-        {posts &&
-          posts.map((post) => {
+        {posts.map((post) => {
             return (
               <li key={post.slug}>
                 {post.frontmatter.date}: {` `}
